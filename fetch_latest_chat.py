@@ -6,7 +6,7 @@ from chat_downloader import ChatDownloader
 
 # ========== 設定 ==========
 API_KEY = os.environ.get("API_KEY");
-CHANNEL_ID = "UC6ixLgVB4D6ucEXb4VhZ-PA"  # チャンネルID
+CHANNEL_ID = "UC-hM6YJuNYVAmUWxeIr9FeA"  # チャンネルID
 KEYWORDS = ["草"]
 NG_WORDS = ["草原"]
 OUTPUT_FILE = "latest_chat_filtered.json"
