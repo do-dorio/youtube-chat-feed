@@ -21,7 +21,7 @@ def fetch_upload_playlist_id(channel_id):
     print("【DEBUG: API応答】", res)
     return res["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
 
-def fetch_video_ids_and_titles(playlist_id, start_date, end_date):
+def fetch_video_ids_and_titles(playlist_id, start_date=None, end_date=None):
     results = []
     next_page_token = None
     while True:
@@ -38,14 +38,16 @@ def fetch_video_ids_and_titles(playlist_id, start_date, end_date):
             snippet = item["snippet"]
             published_at = snippet["publishedAt"]
             published_dt = datetime.fromisoformat(published_at.replace("Z", "+00:00"))
-            if start_date <= published_dt <= end_date:
-                video_id = snippet["resourceId"]["videoId"]
-                title = snippet["title"]
-                results.append((video_id, title))
+            if start_date and end_date:
+                if not (start_date <= published_dt <= end_date):
+                    continue
+            video_id = snippet["resourceId"]["videoId"]
+            title = snippet["title"]
+            results.append((video_id, title))
         next_page_token = res.get("nextPageToken")
-        if not next_page_token:
+        if not next_page_token or (start_date is None and len(results) > 0):
             break
-    return results[:3]  # 簡易検証用に最初の3件のみ処理
+    return results[:3] if start_date else results[:1]  # GitHubは最新1件のみ
 
 def download_and_filter_chat(video_id, title):
     try:
@@ -72,20 +74,24 @@ def download_and_filter_chat(video_id, title):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--channel", default=os.environ.get("CHANNEL_ID", DEFAULT_CHANNEL_ID), help="チャンネルID（UC〜）")
-    parser.add_argument("--start", required=True, help="開始日 (YYYY-MM-DD)")
-    parser.add_argument("--end", required=True, help="終了日 (YYYY-MM-DD)")
+    parser.add_argument("--start", help="開始日 (YYYY-MM-DD)", required=False)
+    parser.add_argument("--end", help="終了日 (YYYY-MM-DD)", required=False)
     args = parser.parse_args()
-
-    start_date = datetime.fromisoformat(args.start).replace(tzinfo=timezone.utc)
-    end_date = datetime.fromisoformat(args.end).replace(tzinfo=timezone.utc) + timedelta(days=1)
 
     print("📺 チャンネルのアップロードプレイリストを取得中...")
     playlist_id = fetch_upload_playlist_id(args.channel)
 
-    print(f"🔎 動画一覧を取得中（期間: {args.start}〜{args.end}）...")
-    videos = fetch_video_ids_and_titles(playlist_id, start_date, end_date)
-    print(f"🎞 対象動画数: {len(videos)}")
+    # 開始日・終了日があればローカルモード
+    if args.start and args.end:
+        start_date = datetime.fromisoformat(args.start).replace(tzinfo=timezone.utc)
+        end_date = datetime.fromisoformat(args.end).replace(tzinfo=timezone.utc) + timedelta(days=1)
+        print(f"🔎 動画一覧を取得中（期間: {args.start}〜{args.end}）...")
+        videos = fetch_video_ids_and_titles(playlist_id, start_date, end_date)
+    else:
+        print("🆕 GitHubモード：最新動画1件を取得中...")
+        videos = fetch_video_ids_and_titles(playlist_id)
 
+    print(f"🎞 対象動画数: {len(videos)}")
     all_filtered = []
     for video_id, title in videos:
         filtered = download_and_filter_chat(video_id, title)
