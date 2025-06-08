@@ -47,12 +47,29 @@ def fetch_video_ids_and_titles(playlist_id, start_date=None, end_date=None):
         next_page_token = res.get("nextPageToken")
         if not next_page_token or (start_date is None and len(results) > 0):
             break
-    return results[:3] if start_date else results[:1]  # GitHubは最新1件のみ
+    return results[:3] if start_date else results  # GitHub用は後でフィルタ
+
+def is_live_streamed(video_id):
+    url = f"{YOUTUBE_API_BASE}/videos?part=liveStreamingDetails&id={video_id}&key={API_KEY}"
+    res = requests.get(url).json()
+    item = res.get("items", [None])[0]
+    if not item:
+        return False
+    live_details = item.get("liveStreamingDetails")
+    return bool(live_details and live_details.get("actualEndTime"))
+
+def get_latest_live_streamed_video(video_list):
+    for video_id, title in video_list:
+        if is_live_streamed(video_id):
+            print(f"🎥 ライブ配信済み動画を選択: {video_id}")
+            return [(video_id, title)]
+    print("⚠️ ライブ配信済み動画が見つかりませんでした")
+    return []
 
 def download_and_filter_chat(video_id, title):
     try:
         print("📥 チャットダウンロード開始", video_id)
-        chat = ChatDownloader().get_chat(f"https://www.youtube.com/watch?v={video_id}",ignore_errors=True)
+        chat = ChatDownloader().get_chat(f"https://www.youtube.com/watch?v={video_id}", ignore_errors=True)
         print("✅ チャット取得完了", video_id)
         filtered = []
         for message in chat:
@@ -81,15 +98,15 @@ def main():
     print("📺 チャンネルのアップロードプレイリストを取得中...")
     playlist_id = fetch_upload_playlist_id(args.channel)
 
-    # 開始日・終了日があればローカルモード
     if args.start and args.end:
         start_date = datetime.fromisoformat(args.start).replace(tzinfo=timezone.utc)
         end_date = datetime.fromisoformat(args.end).replace(tzinfo=timezone.utc) + timedelta(days=1)
         print(f"🔎 動画一覧を取得中（期間: {args.start}〜{args.end}）...")
         videos = fetch_video_ids_and_titles(playlist_id, start_date, end_date)
     else:
-        print("🆕 GitHubモード：最新動画1件を取得中...")
-        videos = fetch_video_ids_and_titles(playlist_id)
+        print("🆕 GitHubモード：ライブ配信済みの最新動画を取得中...")
+        raw_videos = fetch_video_ids_and_titles(playlist_id)
+        videos = get_latest_live_streamed_video(raw_videos)
 
     print(f"🎞 対象動画数: {len(videos)}")
     all_filtered = []
