@@ -1,70 +1,218 @@
 [
   {
-    "time_in_seconds": 1773.485,
+    "time_in_seconds": 835.467,
     "action_type": "add_chat_item",
-    "message": "草",
-    "message_id": "ChwKGkNOWGdnYTJ0MzQwREZURFF3Z1Fka1JVQ3dB",
-    "timestamp": 1749300814059087,
-    "time_text": "29:33",
+    "message": "キス音助かる",
+    "message_id": "ChwKGkNMcXAtNmU0NEkwREZmTWRyUVlkSjdvR1Z3",
+    "timestamp": 1749338115989066,
+    "time_text": "13:55",
     "author": {
-      "name": "ssk",
+      "name": "Tomo",
       "images": [
         {
-          "url": "https://yt4.ggpht.com/mcZjyoBan1qgGljBWFXb63eKlt569LcpNuUzVdA4YDhcw0dYRbgrE3DBMyw5NNS0G1flP67aeg",
+          "url": "https://yt4.ggpht.com/ytc/AIdro_mB0AEzuPBnHUnbJ05Kn6OFC0GWil99rk2mq0C8tMcOp8jSTPBxtIYFzdnOER1R9KYpvA",
           "id": "source"
         },
         {
-          "url": "https://yt4.ggpht.com/mcZjyoBan1qgGljBWFXb63eKlt569LcpNuUzVdA4YDhcw0dYRbgrE3DBMyw5NNS0G1flP67aeg=s32-c-k-c0x00ffffff-no-rj",
+          "url": "https://yt4.ggpht.com/ytc/AIdro_mB0AEzuPBnHUnbJ05Kn6OFC0GWil99rk2mq0C8tMcOp8jSTPBxtIYFzdnOER1R9KYpvA=s32-c-k-c0x00ffffff-no-rj",
           "width": 32,
           "height": 32,
           "id": "32x32"
         },
         {
-          "url": "https://yt4.ggpht.com/mcZjyoBan1qgGljBWFXb63eKlt569LcpNuUzVdA4YDhcw0dYRbgrE3DBMyw5NNS0G1flP67aeg=s64-c-k-c0x00ffffff-no-rj",
+          "url": "https://yt4.ggpht.com/ytc/AIdro_mB0AEzuPBnHUnbJ05Kn6OFC0GWil99rk2mq0C8tMcOp8jSTPBxtIYFzdnOER1R9KYpvA=s64-c-k-c0x00ffffff-no-rj",
           "width": 64,
           "height": 64,
           "id": "64x64"
         }
       ],
-      "id": "UC_TgjrrJrisK4JqPDZmAtHA"
+      "id": "UCua90N7pBafcok8ucDJJn_A"
     },
     "message_type": "text_message",
-    "videoId": "b5GToNjmXMw",
-    "videoTitle": "【マリオカートワールド】みもさんとドライブする放送🚗💨",
-    "videoPublishedAt": "2025-06-07T14:36:28Z"
+    "videoId": "lnxUBJj_c48",
+    "videoTitle": "【スーパーマリオ ヨッシーアイランド】初見！ヨッシーにキャリーしてもらうニチアサ【にじさんじ/矢車りね】",
+    "videoPublishedAt": "2025-06-08T01:11:25Z"
   },
   {
-    "time_in_seconds": 2649.109,
+    "time_in_seconds": 872.214,
     "action_type": "add_chat_item",
-    "message": "草",
-    "message_id": "ChwKGkNQRGJ6TTZ3MzQwREZYUFB3Z1FkS2lNWXJB",
-    "timestamp": 1749301689801127,
-    "time_text": "44:09",
+    "message": "あくまのキッス",
+    "message_id": "ChwKGkNKclZ3N200NEkwREZYUFB3Z1FkS2lNWXJB",
+    "timestamp": 1749338152825320,
+    "time_text": "14:32",
     "author": {
-      "name": "アリアン",
+      "name": "さぺ",
       "images": [
         {
-          "url": "https://yt4.ggpht.com/XmhLy9uSAFQgNx8lhl2FoIcaujY5xZqtCu1BwQTbcQgtvhv8IYPwvrpVJrROMXlCXZmd0DZx6w",
+          "url": "https://yt4.ggpht.com/ytc/AIdro_lUIm2zsz0ieDv5mPIzsVCebbBFuWh0R2Yq0LnbUXGZ6g",
           "id": "source"
         },
         {
-          "url": "https://yt4.ggpht.com/XmhLy9uSAFQgNx8lhl2FoIcaujY5xZqtCu1BwQTbcQgtvhv8IYPwvrpVJrROMXlCXZmd0DZx6w=s32-c-k-c0x00ffffff-no-rj",
+          "url": "https://yt4.ggpht.com/ytc/AIdro_lUIm2zsz0ieDv5mPIzsVCebbBFuWh0R2Yq0LnbUXGZ6g=s32-c-k-c0x00ffffff-no-rj",
           "width": 32,
           "height": 32,
           "id": "32x32"
         },
         {
-          "url": "https://yt4.ggpht.com/XmhLy9uSAFQgNx8lhl2FoIcaujY5xZqtCu1BwQTbcQgtvhv8IYPwvrpVJrROMXlCXZmd0DZx6w=s64-c-k-c0x00ffffff-no-rj",
+          "url": "https://yt4.ggpht.com/ytc/AIdro_lUIm2zsz0ieDv5mPIzsVCebbBFuWh0R2Yq0LnbUXGZ6g=s64-c-k-c0x00ffffff-no-rj",
           "width": 64,
           "height": 64,
           "id": "64x64"
         }
       ],
-      "id": "UCDWdTDJYP_oN8FUPteTmxtw"
+      "id": "UCUnFdIR8BE9jM5RNS4TjdZQ"
     },
     "message_type": "text_message",
-    "videoId": "b5GToNjmXMw",
-    "videoTitle": "【マリオカートワールド】みもさんとドライブする放送🚗💨",
-    "videoPublishedAt": "2025-06-07T14:36:28Z"
+    "videoId": "lnxUBJj_c48",
+    "videoTitle": "【スーパーマリオ ヨッシーアイランド】初見！ヨッシーにキャリーしてもらうニチアサ【にじさんじ/矢車りね】",
+    "videoPublishedAt": "2025-06-08T01:11:25Z"
+  },
+  {
+    "time_in_seconds": 919.49,
+    "action_type": "add_chat_item",
+    "message": "キッスしてないタイミングに来て良かった",
+    "message_id": "ChwKGkNJUHBfYy00NEkwREZYNE1yUVlkNEtnU2tn",
+    "timestamp": 1749338199915445,
+    "time_text": "15:19",
+    "author": {
+      "name": "りを",
+      "images": [
+        {
+          "url": "https://yt4.ggpht.com/edbJDVSWKGfA2_QcJyFM8fsdFrbn6RZpJKyw9GEjmiJ268akk7TeZSC4QBJyCqXrTaeotct-Iyc",
+          "id": "source"
+        },
+        {
+          "url": "https://yt4.ggpht.com/edbJDVSWKGfA2_QcJyFM8fsdFrbn6RZpJKyw9GEjmiJ268akk7TeZSC4QBJyCqXrTaeotct-Iyc=s32-c-k-c0x00ffffff-no-rj",
+          "width": 32,
+          "height": 32,
+          "id": "32x32"
+        },
+        {
+          "url": "https://yt4.ggpht.com/edbJDVSWKGfA2_QcJyFM8fsdFrbn6RZpJKyw9GEjmiJ268akk7TeZSC4QBJyCqXrTaeotct-Iyc=s64-c-k-c0x00ffffff-no-rj",
+          "width": 64,
+          "height": 64,
+          "id": "64x64"
+        }
+      ],
+      "id": "UCdZZnBcOEuFyuZhX0bynoKg"
+    },
+    "message_type": "text_message",
+    "videoId": "lnxUBJj_c48",
+    "videoTitle": "【スーパーマリオ ヨッシーアイランド】初見！ヨッシーにキャリーしてもらうニチアサ【にじさんじ/矢車りね】",
+    "videoPublishedAt": "2025-06-08T01:11:25Z"
+  },
+  {
+    "time_in_seconds": 926.548,
+    "action_type": "add_chat_item",
+    "message": "たしかに大矢車様のキス音は貴重ではあるけど矢車のことそういう目で見れないかも……",
+    "message_id": "ChwKGkNKV1NzdE80NEkwREZUTWJyUVlkUDBFNzlB",
+    "timestamp": 1749338207064920,
+    "time_text": "15:26",
+    "author": {
+      "name": "はら",
+      "images": [
+        {
+          "url": "https://yt4.ggpht.com/ytc/AIdro_nLnK16lWTM4ZiYWe1z2WRLEwwqVXAcutzfY7ul5GcEiGHF_G4mydMqfgdKQkChZbOv1-2LwyRV",
+          "id": "source"
+        },
+        {
+          "url": "https://yt4.ggpht.com/ytc/AIdro_nLnK16lWTM4ZiYWe1z2WRLEwwqVXAcutzfY7ul5GcEiGHF_G4mydMqfgdKQkChZbOv1-2LwyRV=s32-c-k-c0x00ffffff-no-rj",
+          "width": 32,
+          "height": 32,
+          "id": "32x32"
+        },
+        {
+          "url": "https://yt4.ggpht.com/ytc/AIdro_nLnK16lWTM4ZiYWe1z2WRLEwwqVXAcutzfY7ul5GcEiGHF_G4mydMqfgdKQkChZbOv1-2LwyRV=s64-c-k-c0x00ffffff-no-rj",
+          "width": 64,
+          "height": 64,
+          "id": "64x64"
+        }
+      ],
+      "badges": [
+        {
+          "title": "Member (2 months)",
+          "icons": [
+            {
+              "url": "https://yt3.ggpht.com/CqEti_r2FMtNZssoyKgGJqt3NKJOz57zWweRiRFSVulxODupllg23DjSRieyPVDNQ9Rm4HINLA",
+              "id": "source"
+            },
+            {
+              "url": "https://yt3.ggpht.com/CqEti_r2FMtNZssoyKgGJqt3NKJOz57zWweRiRFSVulxODupllg23DjSRieyPVDNQ9Rm4HINLA=s16-c-k",
+              "width": 16,
+              "height": 16,
+              "id": "16x16"
+            },
+            {
+              "url": "https://yt3.ggpht.com/CqEti_r2FMtNZssoyKgGJqt3NKJOz57zWweRiRFSVulxODupllg23DjSRieyPVDNQ9Rm4HINLA=s32-c-k",
+              "width": 32,
+              "height": 32,
+              "id": "32x32"
+            }
+          ]
+        }
+      ],
+      "id": "UC5M6i4_BIjhPlLCe_E9ovzg"
+    },
+    "message_type": "text_message",
+    "videoId": "lnxUBJj_c48",
+    "videoTitle": "【スーパーマリオ ヨッシーアイランド】初見！ヨッシーにキャリーしてもらうニチアサ【にじさんじ/矢車りね】",
+    "videoPublishedAt": "2025-06-08T01:11:25Z"
+  },
+  {
+    "time_in_seconds": 1776.639,
+    "action_type": "add_chat_item",
+    "message": "キス音は残機失われ得るぞ",
+    "message_id": "ChwKGkNQT2kyLWk3NEkwREZiekR3Z1FkaW9VVFhn",
+    "timestamp": 1749339057084570,
+    "time_text": "29:36",
+    "author": {
+      "name": "mu ma",
+      "images": [
+        {
+          "url": "https://yt4.ggpht.com/ytc/AIdro_mGW9Ujs1c0FTMsbiuK5yz3D_gtgmiOOpT-WJpZnH1bLp0",
+          "id": "source"
+        },
+        {
+          "url": "https://yt4.ggpht.com/ytc/AIdro_mGW9Ujs1c0FTMsbiuK5yz3D_gtgmiOOpT-WJpZnH1bLp0=s32-c-k-c0x00ffffff-no-rj",
+          "width": 32,
+          "height": 32,
+          "id": "32x32"
+        },
+        {
+          "url": "https://yt4.ggpht.com/ytc/AIdro_mGW9Ujs1c0FTMsbiuK5yz3D_gtgmiOOpT-WJpZnH1bLp0=s64-c-k-c0x00ffffff-no-rj",
+          "width": 64,
+          "height": 64,
+          "id": "64x64"
+        }
+      ],
+      "badges": [
+        {
+          "title": "Member (2 months)",
+          "icons": [
+            {
+              "url": "https://yt3.ggpht.com/CqEti_r2FMtNZssoyKgGJqt3NKJOz57zWweRiRFSVulxODupllg23DjSRieyPVDNQ9Rm4HINLA",
+              "id": "source"
+            },
+            {
+              "url": "https://yt3.ggpht.com/CqEti_r2FMtNZssoyKgGJqt3NKJOz57zWweRiRFSVulxODupllg23DjSRieyPVDNQ9Rm4HINLA=s16-c-k",
+              "width": 16,
+              "height": 16,
+              "id": "16x16"
+            },
+            {
+              "url": "https://yt3.ggpht.com/CqEti_r2FMtNZssoyKgGJqt3NKJOz57zWweRiRFSVulxODupllg23DjSRieyPVDNQ9Rm4HINLA=s32-c-k",
+              "width": 32,
+              "height": 32,
+              "id": "32x32"
+            }
+          ]
+        }
+      ],
+      "id": "UCv7dbTLhcLFcP6EeZOYuojw"
+    },
+    "message_type": "text_message",
+    "videoId": "lnxUBJj_c48",
+    "videoTitle": "【スーパーマリオ ヨッシーアイランド】初見！ヨッシーにキャリーしてもらうニチアサ【にじさんじ/矢車りね】",
+    "videoPublishedAt": "2025-06-08T01:11:25Z"
   }
 ]

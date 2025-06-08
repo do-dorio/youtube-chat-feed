@@ -1,4 +1,5 @@
 import json
+import base64
 import shutil
 import os
 from datetime import datetime, timedelta
@@ -8,19 +9,17 @@ INPUT_JSON = "latest_chat_filtered.json"
 OUTPUT_RSS = "chat_feed.xml"
 OUTPUT_DIR = "docs"
 
+def load_filters(path="filters.json"):
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    labels = data.get("labels", {})
+    return labels
+
 # ========== ラベル設定 ==========
-KEYWORD_LABELS = {
-    "脳吸い": "ディープキス",
-	"脳吸う": "ディープキスする",
-    "脳吸わ": "強烈に吸わ",
-	"脳吸": "すごく吸",
-    "汚い": "助かる",
-	"きたない": "たすかる",
-	"きちゃない": "たすかる～",
-	"キツい" : "助かる",
-	"キツすぎ" : "助かりすぎ"
-}
-LONG_MSG_THRESHOLD = 20  # 長文とみなす文字数
+
+
+LONG_MSG_THRESHOLD = 20  # 長文とみなす文字数    
+KEYWORD_LABELS = load_filters()
 
 # ========== チャット読み込み ==========
 with open(INPUT_JSON, "r", encoding="utf-8") as f:
@@ -64,26 +63,26 @@ for chat in chats:
     {content}
     """
 
-    rss_items.append(f"""
-    <item>
-      <title>{escape(title)}</title>
-      <link>{escape(link)}</link>
-      <description><![CDATA[{description}]]></description>
-      <pubDate>{dt_str}</pubDate>
-    </item>
-    """)
+    rss_items.append(
+    f'<item>'
+    f'<title>{escape(title)}</title>'
+    f'<link>{escape(link)}</link>'
+    f'<description><![CDATA[{description}]]></description>'
+    f'<pubDate>{dt_str}</pubDate>'
+    f'</item>'
+    )
 
-rss_feed = f"""
-<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
-<rss version=\"2.0\">
-  <channel>
-    <title>YouTube Chat Feed</title>
-    <link>https://www.youtube.com</link>
-    <description>Latest filtered chat from YouTube</description>
-    {''.join(rss_items)}
-  </channel>
-</rss>
-"""
+rss_feed = (
+    '<?xml version="1.0" encoding="UTF-8" ?>'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>YouTube Chat Feed</title>'
+    '<link>https://www.youtube.com</link>'
+    '<description>Latest filtered chat from YouTube</description>'
+    + ''.join(rss_items) +
+    '</channel>'
+    '</rss>'
+)
 
 with open(OUTPUT_RSS, "w", encoding="utf-8") as f:
     f.write(rss_feed)

@@ -1,18 +1,31 @@
 import requests
+import base64
 import json
 import os
 import argparse
 from datetime import datetime, timedelta, timezone
 from chat_downloader import ChatDownloader
 
+def load_filters(path="filters.json"):
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    # 検索対象キーワード
+    keywords = data.get("keywords", [])
+
+    # NGワード群（hidden: base64, monitor: 平文）
+    ng_section = data.get("ng_words", {})
+    hidden = [base64.b64decode(b).decode("utf-8") for b in ng_section.get("hidden", [])]
+    monitor = ng_section.get("monitor", [])
+
+    # 統合NGワード（検索対象とは絶対に混ざらないように分離）
+    ng_words = hidden + monitor
+
+    return keywords, ng_words
+
 # ========== 設定 ==========
 API_KEY = os.environ.get("API_KEY")
-KEYWORDS = ["キッス", "ちゅ助", "ちゅー助", "んーま", "ドレインキス", "脳吸", "キス音", "チュパ音", "ん～ま"];
-NG_WORDS = [
-    "メルティーキッス", "バレンタインキッス", "んーまい", "んーまぁ", 
-    "んーまあ", "んーまか", "んーまず", "臭", 
-    "ん～まぁ", "ん～まい", "ん～まあ", "ん～まず"
-    ];
+KEYWORDS, NG_WORDS = load_filters()
 CHANNELS_FILE = "channels.json"
 OUTPUT_FILE = "latest_chat_filtered.json"
 PROCESSED_FILE = "processed_videos.json"
