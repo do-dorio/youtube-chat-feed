@@ -24,23 +24,20 @@ for chat in chats:
     content = escape(chat.get("message", ""))
     title = f"{chat.get('videoTitle', '動画')} @ {timestamp // 60}分{timestamp % 60}秒"
 
-    rss_items.append(f"""
-    <item>
+    rss_items.append(f"""    <item>
       <title>{escape(title)}</title>
       <link>{escape(link)}</link>
       <description>{content}</description>
       <pubDate>{dt_str}</pubDate>
-    </item>
-    """)
+    </item>""")
 
-rss_feed = f"""
-<?xml version="1.0" encoding="UTF-8" ?>
+rss_feed = f"""<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
     <title>YouTube Chat Feed</title>
     <link>https://www.youtube.com</link>
     <description>Latest filtered chat from YouTube</description>
-    {''.join(rss_items)}
+{''.join(rss_items)}
   </channel>
 </rss>
 """
