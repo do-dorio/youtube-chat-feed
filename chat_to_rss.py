@@ -11,6 +11,10 @@ OUTPUT_DIR = "docs"
 with open(INPUT_JSON, "r", encoding="utf-8") as f:
     chats = json.load(f)
 
+if not chats:
+    print("⚠️ フィルター結果が0件のため、RSSは生成されませんでした。")
+    exit()
+
 rss_items = []
 for chat in chats:
     timestamp = int(chat.get("time_in_seconds", 0))
