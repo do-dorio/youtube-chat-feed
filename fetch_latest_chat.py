@@ -9,7 +9,7 @@ from chat_downloader import ChatDownloader
 API_KEY = os.environ.get("API_KEY")
 KEYWORDS = ["草"]
 NG_WORDS = ["草原"]
-OUTPUT_FILE = "all_chats_filtered.json"
+OUTPUT_FILE = "latest_chat_filtered.json"
 DEFAULT_CHANNEL_ID = "UC6ixLgVB4D6ucEXb4VhZ-PA"
 # ==========================
 
@@ -52,7 +52,7 @@ def fetch_video_ids_and_titles(playlist_id, start_date=None, end_date=None):
 def download_and_filter_chat(video_id, title):
     try:
         print("📥 チャットダウンロード開始", video_id)
-        chat = ChatDownloader().get_chat(f"https://www.youtube.com/watch?v={video_id}")
+        chat = ChatDownloader().get_chat(f"https://www.youtube.com/watch?v={video_id}",ignore_errors=True)
         print("✅ チャット取得完了", video_id)
         filtered = []
         for message in chat:
