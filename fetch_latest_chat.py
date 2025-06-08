@@ -69,7 +69,7 @@ def get_latest_live_streamed_video(video_list):
 def download_and_filter_chat(video_id, title):
     try:
         print("📥 チャットダウンロード開始", video_id)
-        chat = ChatDownloader().get_chat(f"https://www.youtube.com/watch?v={video_id}", ignore_errors=True)
+        chat = ChatDownloader().get_chat(f"https://www.youtube.com/watch?v={video_id}")
         print("✅ チャット取得完了", video_id)
         filtered = []
         for message in chat:
