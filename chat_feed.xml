@@ -1,14 +1,30 @@
+
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
     <title>YouTube Chat Feed</title>
     <link>https://www.youtube.com</link>
     <description>Latest filtered chat from YouTube</description>
+    
     <item>
-      <title>テスト配信 @ 2分3秒</title>
-      <link>https://www.youtube.com/watch?v=abc123&amp;t=93s</link>
-      <description>草</description>
-      <pubDate>1970-01-01T00:02:03Z</pubDate>
+      <title>（笑）: 【マリオカートワールド】みもさんとドライブする放送🚗💨 @ 29分33秒</title>
+      <link>https://www.youtube.com/watch?v=b5GToNjmXMw&amp;t=1743s</link>
+      <description><![CDATA[
+    <img src="https://i.ytimg.com/vi/b5GToNjmXMw/hqdefault.jpg" width="320"><br>
+    草
+    ]]></description>
+      <pubDate>Sat, 07 Jun 2025 15:06:01 +0000</pubDate>
     </item>
+    
+    <item>
+      <title>（笑）: 【マリオカートワールド】みもさんとドライブする放送🚗💨 @ 44分9秒</title>
+      <link>https://www.youtube.com/watch?v=b5GToNjmXMw&amp;t=2619s</link>
+      <description><![CDATA[
+    <img src="https://i.ytimg.com/vi/b5GToNjmXMw/hqdefault.jpg" width="320"><br>
+    草
+    ]]></description>
+      <pubDate>Sat, 07 Jun 2025 15:20:37 +0000</pubDate>
+    </item>
+    
   </channel>
 </rss>

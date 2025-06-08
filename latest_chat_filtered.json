@@ -1,0 +1,70 @@
+[
+  {
+    "time_in_seconds": 1773.485,
+    "action_type": "add_chat_item",
+    "message": "草",
+    "message_id": "ChwKGkNOWGdnYTJ0MzQwREZURFF3Z1Fka1JVQ3dB",
+    "timestamp": 1749300814059087,
+    "time_text": "29:33",
+    "author": {
+      "name": "ssk",
+      "images": [
+        {
+          "url": "https://yt4.ggpht.com/mcZjyoBan1qgGljBWFXb63eKlt569LcpNuUzVdA4YDhcw0dYRbgrE3DBMyw5NNS0G1flP67aeg",
+          "id": "source"
+        },
+        {
+          "url": "https://yt4.ggpht.com/mcZjyoBan1qgGljBWFXb63eKlt569LcpNuUzVdA4YDhcw0dYRbgrE3DBMyw5NNS0G1flP67aeg=s32-c-k-c0x00ffffff-no-rj",
+          "width": 32,
+          "height": 32,
+          "id": "32x32"
+        },
+        {
+          "url": "https://yt4.ggpht.com/mcZjyoBan1qgGljBWFXb63eKlt569LcpNuUzVdA4YDhcw0dYRbgrE3DBMyw5NNS0G1flP67aeg=s64-c-k-c0x00ffffff-no-rj",
+          "width": 64,
+          "height": 64,
+          "id": "64x64"
+        }
+      ],
+      "id": "UC_TgjrrJrisK4JqPDZmAtHA"
+    },
+    "message_type": "text_message",
+    "videoId": "b5GToNjmXMw",
+    "videoTitle": "【マリオカートワールド】みもさんとドライブする放送🚗💨",
+    "videoPublishedAt": "2025-06-07T14:36:28Z"
+  },
+  {
+    "time_in_seconds": 2649.109,
+    "action_type": "add_chat_item",
+    "message": "草",
+    "message_id": "ChwKGkNQRGJ6TTZ3MzQwREZYUFB3Z1FkS2lNWXJB",
+    "timestamp": 1749301689801127,
+    "time_text": "44:09",
+    "author": {
+      "name": "アリアン",
+      "images": [
+        {
+          "url": "https://yt4.ggpht.com/XmhLy9uSAFQgNx8lhl2FoIcaujY5xZqtCu1BwQTbcQgtvhv8IYPwvrpVJrROMXlCXZmd0DZx6w",
+          "id": "source"
+        },
+        {
+          "url": "https://yt4.ggpht.com/XmhLy9uSAFQgNx8lhl2FoIcaujY5xZqtCu1BwQTbcQgtvhv8IYPwvrpVJrROMXlCXZmd0DZx6w=s32-c-k-c0x00ffffff-no-rj",
+          "width": 32,
+          "height": 32,
+          "id": "32x32"
+        },
+        {
+          "url": "https://yt4.ggpht.com/XmhLy9uSAFQgNx8lhl2FoIcaujY5xZqtCu1BwQTbcQgtvhv8IYPwvrpVJrROMXlCXZmd0DZx6w=s64-c-k-c0x00ffffff-no-rj",
+          "width": 64,
+          "height": 64,
+          "id": "64x64"
+        }
+      ],
+      "id": "UCDWdTDJYP_oN8FUPteTmxtw"
+    },
+    "message_type": "text_message",
+    "videoId": "b5GToNjmXMw",
+    "videoTitle": "【マリオカートワールド】みもさんとドライブする放送🚗💨",
+    "videoPublishedAt": "2025-06-07T14:36:28Z"
+  }
+]

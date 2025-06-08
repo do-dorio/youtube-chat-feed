@@ -5,8 +5,8 @@ name: Update Chat Feed
 
 on:
   schedule:
-    - cron: '0 * * * *'  # 毎時0分に実行（UTC）
-  workflow_dispatch:     # 手動実行も可能にする
+    - cron: '12 12 * * *'  # 毎日21:00 JST（＝12:00 UTC）
+  workflow_dispatch:       # 手動実行も可能にする
 
 jobs:
   build:

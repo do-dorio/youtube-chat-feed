@@ -7,23 +7,43 @@ from chat_downloader import ChatDownloader
 
 # ========== 設定 ==========
 API_KEY = os.environ.get("API_KEY")
-KEYWORDS = ["草"]
-NG_WORDS = ["草原"]
+KEYWORDS = ["キッス", "ちゅ助", "ちゅー助", "んーま", "ドレインキス", "脳吸", "キス音", "チュパ音", "ん～ま"];
+NG_WORDS = [
+    "メルティーキッス", "バレンタインキッス", "んーまい", "んーまぁ", 
+    "んーまあ", "んーまか", "んーまず", "臭", 
+    "ん～まぁ", "ん～まい", "ん～まあ", "ん～まず"
+    ];
+CHANNELS_FILE = "channels.json"
 OUTPUT_FILE = "latest_chat_filtered.json"
-DEFAULT_CHANNEL_ID = "UC6ixLgVB4D6ucEXb4VhZ-PA"
+PROCESSED_FILE = "processed_videos.json"
+YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3"
 # ==========================
 
-YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3"
+def load_channels():
+    with open(CHANNELS_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def load_processed_ids():
+    if os.path.exists(PROCESSED_FILE):
+        with open(PROCESSED_FILE, "r", encoding="utf-8") as f:
+            return set(json.load(f))
+    return set()
+
+def save_processed_ids(processed_ids):
+    with open(PROCESSED_FILE, "w", encoding="utf-8") as f:
+        json.dump(list(processed_ids), f, ensure_ascii=False, indent=2)
 
 def fetch_upload_playlist_id(channel_id):
     url = f"{YOUTUBE_API_BASE}/channels?part=contentDetails&id={channel_id}&key={API_KEY}"
     res = requests.get(url).json()
-    print("【DEBUG: API応答】", res)
     return res["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
 
-def fetch_video_ids_and_titles(playlist_id, start_date=None, end_date=None):
+def fetch_recent_video_ids(playlist_id):
+    now = datetime.now(timezone.utc)
+    yesterday = now - timedelta(days=1)
     results = []
     next_page_token = None
+
     while True:
         url = f"{YOUTUBE_API_BASE}/playlistItems"
         params = {
@@ -38,16 +58,14 @@ def fetch_video_ids_and_titles(playlist_id, start_date=None, end_date=None):
             snippet = item["snippet"]
             published_at = snippet["publishedAt"]
             published_dt = datetime.fromisoformat(published_at.replace("Z", "+00:00"))
-            if start_date and end_date:
-                if not (start_date <= published_dt <= end_date):
-                    continue
-            video_id = snippet["resourceId"]["videoId"]
-            title = snippet["title"]
-            results.append((video_id, title))
+            if published_dt >= yesterday:
+                video_id = snippet["resourceId"]["videoId"]
+                title = snippet["title"]
+                results.append((video_id, title, published_at))
         next_page_token = res.get("nextPageToken")
-        if not next_page_token or (start_date is None and len(results) > 0):
+        if not next_page_token:
             break
-    return results[:3] if start_date else results  # GitHub用は後でフィルタ
+    return results
 
 def is_live_streamed(video_id):
     url = f"{YOUTUBE_API_BASE}/videos?part=liveStreamingDetails&id={video_id}&key={API_KEY}"
@@ -55,22 +73,13 @@ def is_live_streamed(video_id):
     item = res.get("items", [None])[0]
     if not item:
         return False
-    live_details = item.get("liveStreamingDetails")
-    return bool(live_details and live_details.get("actualEndTime"))
+    details = item.get("liveStreamingDetails", {})
+    return bool(details.get("actualEndTime"))
 
-def get_latest_live_streamed_video(video_list):
-    for video_id, title in video_list:
-        if is_live_streamed(video_id):
-            print(f"🎥 ライブ配信済み動画を選択: {video_id}")
-            return [(video_id, title)]
-    print("⚠️ ライブ配信済み動画が見つかりませんでした")
-    return []
-
-def download_and_filter_chat(video_id, title):
+def download_and_filter_chat(video_id, title, published_at):
     try:
         print("📥 チャットダウンロード開始", video_id)
         chat = ChatDownloader().get_chat(f"https://www.youtube.com/watch?v={video_id}")
-        print("✅ チャット取得完了", video_id)
         filtered = []
         for message in chat:
             msg = message.get("message", "")
@@ -81,6 +90,7 @@ def download_and_filter_chat(video_id, title):
                     continue
                 message["videoId"] = video_id
                 message["videoTitle"] = title
+                message["videoPublishedAt"] = published_at
                 filtered.append(message)
         print(f"✅ フィルタ完了 {video_id}: {len(filtered)} 件通過")
         return filtered
@@ -89,33 +99,34 @@ def download_and_filter_chat(video_id, title):
         return []
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--channel", default=os.environ.get("CHANNEL_ID", DEFAULT_CHANNEL_ID), help="チャンネルID（UC〜）")
-    parser.add_argument("--start", help="開始日 (YYYY-MM-DD)", required=False)
-    parser.add_argument("--end", help="終了日 (YYYY-MM-DD)", required=False)
-    args = parser.parse_args()
-
-    print("📺 チャンネルのアップロードプレイリストを取得中...")
-    playlist_id = fetch_upload_playlist_id(args.channel)
-
-    if args.start and args.end:
-        start_date = datetime.fromisoformat(args.start).replace(tzinfo=timezone.utc)
-        end_date = datetime.fromisoformat(args.end).replace(tzinfo=timezone.utc) + timedelta(days=1)
-        print(f"🔎 動画一覧を取得中（期間: {args.start}〜{args.end}）...")
-        videos = fetch_video_ids_and_titles(playlist_id, start_date, end_date)
-    else:
-        print("🆕 GitHubモード：ライブ配信済みの最新動画を取得中...")
-        raw_videos = fetch_video_ids_and_titles(playlist_id)
-        videos = get_latest_live_streamed_video(raw_videos)
-
-    print(f"🎞 対象動画数: {len(videos)}")
     all_filtered = []
-    for video_id, title in videos:
-        filtered = download_and_filter_chat(video_id, title)
-        all_filtered.extend(filtered)
+    channels = load_channels()
+    processed_ids = load_processed_ids()
+    new_processed_ids = set()
+
+    for channel_id in channels:
+        print(f"\n🎯 チャンネル: {channel_id}")
+        try:
+            playlist_id = fetch_upload_playlist_id(channel_id)
+            videos = fetch_recent_video_ids(playlist_id)
+
+            for video_id, title, published_at in videos:
+                if video_id in processed_ids:
+                    print(f"⏭️ 既に処理済み: {video_id}")
+                    continue
+                if is_live_streamed(video_id):
+                    print(f"▶ ライブ配信済み動画検出: {video_id}")
+                    filtered = download_and_filter_chat(video_id, title, published_at)
+                    all_filtered.extend(filtered)
+                    new_processed_ids.add(video_id)
+        except Exception as e:
+            print(f"⚠️ チャンネル処理失敗: {channel_id} - {e}")
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(all_filtered, f, ensure_ascii=False, indent=2)
+
+    # 最新24時間の動画IDのみ記録として上書き
+    save_processed_ids(new_processed_ids)
 
     print(f"\n🎉 完了：{len(all_filtered)}件のチャットを {OUTPUT_FILE} に保存しました。")
 
