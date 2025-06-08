@@ -1,11 +1,12 @@
 import requests
 import json
+import os
 from datetime import datetime, timezone
 from chat_downloader import ChatDownloader
 
 # ========== 設定 ==========
-API_KEY = "YOUR_API_KEY_HERE"  # ← GitHubのSecretなどで隠す前提
-CHANNEL_ID = "UCxxxxxxxxxxxxxxxx"  # チャンネルID
+API_KEY = os.environ.get("API_KEY");
+CHANNEL_ID = "UC6ixLgVB4D6ucEXb4VhZ-PA"  # チャンネルID
 KEYWORDS = ["草"]
 NG_WORDS = ["草原"]
 OUTPUT_FILE = "latest_chat_filtered.json"
