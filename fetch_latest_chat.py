@@ -34,7 +34,9 @@ YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3"
 
 def load_channels():
     with open(CHANNELS_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+        channels = json.load(f)
+        print([ch["id"] for ch in channels])
+    return [ch["id"] for ch in channels]
 
 def load_processed_ids():
     if os.path.exists(PROCESSED_FILE):
