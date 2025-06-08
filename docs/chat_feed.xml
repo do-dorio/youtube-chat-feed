@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>テストフィード</title>
+    <link>https://example.com</link>
+    <description>これはテストフィードです</description>
+    <item>
+      <title>テスト項目</title>
+      <link>https://example.com/item</link>
+      <description>サンプルです</description>
+      <pubDate>Mon, 10 Jun 2024 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
