@@ -24,7 +24,7 @@ jobs:
       - name: 依存パッケージをインストール
         run: |
           python -m pip install --upgrade pip
-          pip install chat-downloader
+          pip install chat-downloader@git+https://github.com/Indigo128/chat-downloader
 
       - name: チャット取得＆RSS生成スクリプトを実行
         env:
